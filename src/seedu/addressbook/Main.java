@@ -4,9 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.addressbook.commands.Command;
-import seedu.addressbook.commands.CommandResult;
-import seedu.addressbook.commands.ExitCommand;
+import seedu.addressbook.commands.*;
 import seedu.addressbook.data.AddressBook;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.parser.Parser;
@@ -83,12 +81,28 @@ public class Main {
         Command command;
         do {
             String userCommandText = ui.getUserCommand();
+            //List all persons automatically after an add or delete command
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
             recordResult(result);
             ui.showResultToUser(result);
 
+            if(command instanceof AddCommand || command instanceof DeleteCommand) {
+                listTheirDetails();
+            }
+
         } while (!ExitCommand.isExit(command));
+    }
+
+    /*
+     * Executes list command when add or delete command is called.
+     */
+
+    private void listTheirDetails() {
+        Command listCommand = new Parser().parseCommand(ListCommand.COMMAND_WORD);
+        CommandResult listResult = executeCommand(listCommand);
+        recordResult(listResult);
+        ui.showResultToUser(listResult);
     }
 
     /** Updates the {@link #lastShownList} if the result contains a list of Persons. */

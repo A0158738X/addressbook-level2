@@ -1,10 +1,8 @@
 package seedu.addressbook.data;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import seedu.addressbook.commands.Command;
 import seedu.addressbook.data.person.Person;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 import seedu.addressbook.data.person.UniquePersonList;
@@ -81,6 +79,8 @@ public class AddressBook {
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
         syncTagsWithMasterList(toAdd);
+        //List<ReadOnlyPerson> allPersons = addressBook.getAllPersons().immutableListView();
+        //return getMessageForPersonListShownSummary(allPersons);
     }
 
     /**

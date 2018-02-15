@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="gradle-wrapper">
+    <archive path="/Users/Sameenhaja/IdeaProjects/addressbook-level2/gradle/wrapper/gradle-wrapper.jar" />
+  </library>
+</eclipse-userlibraries>
+
